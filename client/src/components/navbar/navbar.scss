@@ -1,0 +1,99 @@
+@import "../../style.scss";
+
+.navbar {
+  @include themify($themes) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 50px;
+    border-bottom: 1px solid themed("border");
+    position: sticky;
+    top: 0;
+    background-color: themed("bg");
+    color:themed("textColor");
+    z-index: 999;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      span {
+        font-weight: bold;
+        font-size: 20px;
+        color: themed("logo");
+      }
+
+      .search {
+        display: flex;
+        align-items: flex-end;
+        width: 50vw;
+        height: 80vh;
+        gap: 10px;
+        border: 1px solid themed("border");
+        border-radius: 5px;
+        padding: 5px;
+
+        input {
+          border: none;
+          width: 500px;
+          background-color: transparent;
+          color: themed("textColor");
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: down;
+      gap: 20px;
+
+      @include mobile{
+        display: none;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 1000;
+
+        @include tablet{
+          display: none;
+        }
+
+        .search-results {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          max-height: 300px;
+          overflow-y: auto;
+          background-color: white;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          z-index: 999; // Add a higher z-index to make sure the search results are displayed above other content
+    
+          // Add the following styles to position the search results below the search input
+        }
+        .search-container {
+          position: relative;
+        }       
+        .search-input {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
